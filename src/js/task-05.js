@@ -8,6 +8,5 @@ function handlerInput(event) {
     }
     textLine.textContent = event.currentTarget.value
 }
-console.log(inputLine);
 
 inputLine.addEventListener('input', handlerInput)
