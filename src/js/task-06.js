@@ -9,8 +9,6 @@ function validator(event) {
         return inputLine.classList.add('valid') 
     }
     return inputLine.classList.add('invalid') 
-    
-
 };
-console.dir(inputLine);
+
 inputLine.addEventListener('blur', validator)   
