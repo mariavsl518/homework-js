@@ -6,9 +6,10 @@ function validator(event) {
     const currentValue = event.currentTarget.value;
 
     if (currentValue.length === lengthValue) { 
-        return inputLine.classList.add('valid') 
+
+        return inputLine.classList.add('valid') || inputLine.classList.replace('invalid','valid');
     }
-    return inputLine.classList.add('invalid') 
+    return inputLine.classList.add('invalid') || inputLine.classList.replace('valid','invalid') 
 };
 
 inputLine.addEventListener('blur', validator)   
