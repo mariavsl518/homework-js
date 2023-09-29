@@ -3,21 +3,42 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-
-
-const boxes = document.querySelector('#boxes');
-const controls = document.querySelector('#controls');
-const input = controls.querySelector('input');
-const create = controls.querySelector('[data-create]')
-const destroy = controls.querySelector('[data-destroy]')
-
-create.addEventListener('click', createMarkup)
-destroy.addEventListener('click', createMarkup)
-
-function createMarkup { 
-  return `
-  <div width="30px" height="30px" background-color="${getRandomHexColor()}"></div>
-  `
+const elements = {
+   boxes: document.querySelector('#boxes'),
+   controls: document.querySelector('#controls'),
+   input: controls.querySelector('input'),
+   create: controls.querySelector('[data-create]'),
+   destroy: controls.querySelector('[data-destroy]'),
 }
-boxes.insertAdjacentHTML('afterbegin', createMarkup)
+
+elements.create.addEventListener('click', createBoxes);
+elements.destroy.addEventListener('click', destroyBoxes);
+elements.input.addEventListener('blur', createValue)
+elements.boxes.style.padding = '20px';
+
+  function createValue(event) { 
+    Number(event.currentTarget.value);
+}  
+const value = createValue();
+console.log(value);
+
+function createBoxes(value) {
+  // const items = [];
+  for (let i = 0; i <= value; i+=1) {
+    const box = document.createElement('div');
+    box.style.width = '30px';
+    box.style.height = '30px';
+    box.style.backgroundColor = `${getRandomHexColor()}`;
+    elements.boxes.append(box);
+    console.log(box);
+    // return items.push(box);
+  }
+  // boxes.append(box);
+  // console.log(boxes);
+}
+
+function destroyBoxes() { 
+  elements.boxes.innerHTML = ''
+  console.log(boxes);
+}
 
